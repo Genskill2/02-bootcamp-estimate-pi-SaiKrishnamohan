@@ -35,28 +35,14 @@ class TestMC(unittest.TestCase):
             self.assertTrue(abs(pi - math.pi) < 0.4, msg=f"Estimate with even {i} iterations is {pi} which is not accurate enough.\n")
  
 def monte_carlo(darts):
-
-    def circledots(darts):
-          inCircle = 0
-          for dot in range(1,darts+1):
-               x = random.random()
-               y = random.random()
-               if (x*x + y*y)**0.5 <= 1.0:
-                    inCircle += 1
-          #Counting for four Quadrants
-          return 4*(inCircle/float(darts))
-
-    def squaredots(darts):
-          insquare = 0
-          for dot in range(1,darts+1):
-               x = random.random()
-               y = random.random()
-               if 0<=x<=1 and 0<=y<=1:
-                    insquare+=1
-          #Counting for four Quadrants       
-          return 4*(insquare/float(darts))
-
-    return 4*(circledots(darts)/squaredots(darts))      
+     inCircle = 0
+     for dot in range(1,darts+1):
+         x = random.random()
+         y = random.random()
+         if (x*x + y*y)**0.5 <= 1.0:
+              inCircle += 1
+         #Counting for four Quadrants
+     return 4*(inCircle/float(darts))
     
 if __name__ == "__main__":
     unittest.main()
